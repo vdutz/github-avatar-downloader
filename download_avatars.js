@@ -10,7 +10,26 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
   var requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
 
-  console.log(requestURL)
+  // console.log(requestURL)
+  request
+          .get({
+            uri: requestURL,
+            headers: {
+             'User-Agent': 'GitHub Avatar Downloader - Student Project'
+            }
+          })
+          //.set('User-Agent', 'GitHub Avatar Downloader - Student Project')
+          .on('error', function (err) {
+            throw err;
+          })
+          .on('response', function (response) {
+            console.log('Response Status Code: ', response.statusCode);
+            console.log('Reponse message: ', response.statusMessage);
+            //console.log(response.body)
+          })
+          //  .on('body', function (body) {
+          //   console.log("TEST")
+          // })
 }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
