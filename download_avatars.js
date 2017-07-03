@@ -2,6 +2,14 @@ var request = require('request');
 var fs = require('fs');
 
 
+require('dotenv').config(). // Requiring and configuring dotenv
+
+
+// Accessing environment variables stored in .env file
+var GITHUB_USER = process.env.GITHUB_USER;
+var GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+
+
 // Capturing command line arguments from user
 repoOwner = process.argv[2];
 repoName = process.argv[3];
@@ -16,11 +24,6 @@ if (!repoOwner || !repoName) {
 
 
 console.log('Welcome to the Github Avatar Downloader!');
-
-
-var GITHUB_USER = 'vdutz';
-var GITHUB_TOKEN = '5ff676298d5b86d9aa9cd5fea7d66079a41f9195';
-
 
 // This is the main function which makes a HTTP request to the Github API in order to access the list of contributors for a repository
 function getRepoContributors(repoOwner, repoName, cb) {
