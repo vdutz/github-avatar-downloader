@@ -4,6 +4,12 @@ var fs = require('fs');
 repoOwner = process.argv[2]
 repoName = process.argv[3]
 
+if (!repoOwner || !repoName) {
+  console.log('Please enter a repository owner and a repository name. Example:')
+  console.log('\tnode download_avatar.js <repoOwner> <repoName>');
+  return
+}
+
 console.log('Welcome to the Github Avatar Downloader!');
 
 var GITHUB_USER = 'vdutz';
