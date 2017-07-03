@@ -17,6 +17,13 @@ function getRepoContributors(repoOwner, repoName, cb) {
             headers: {
              'User-Agent': 'GitHub Avatar Downloader - Student Project'
             }
+          }, function(err, response, body) {
+            if (err) {
+              throw err
+            } else {
+              console.log(body);
+
+            }
           })
           //.set('User-Agent', 'GitHub Avatar Downloader - Student Project')
           .on('error', function (err) {
@@ -25,11 +32,7 @@ function getRepoContributors(repoOwner, repoName, cb) {
           .on('response', function (response) {
             console.log('Response Status Code: ', response.statusCode);
             console.log('Reponse message: ', response.statusMessage);
-            //console.log(response.body)
           })
-          //  .on('body', function (body) {
-          //   console.log("TEST")
-          // })
 }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
